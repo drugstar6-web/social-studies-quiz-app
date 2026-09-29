@@ -46,7 +46,13 @@
       "clue": "千葉県北東部の代表的な漁港。"
     }
   ],
-  "images": [],
+  "images": [
+    {
+      "file": "day06_chiba_agriculture_fishing_diagram.jpg",
+      "title": "千葉県の農業と漁業",
+      "caption": "近郊農業、らっかせい、梨、銆子漁港の4つを絵で確認しよう。"
+    }
+  ],
   "questions": [
     {
       "id": "d06_q01",

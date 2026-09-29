@@ -30,7 +30,7 @@ EXPORTS_DIR = BASE_DIR / "Exports"
 BACKUPS_DIR = BASE_DIR / "Backups"
 HISTORY_PATH = DATA_DIR / "learning_history.json"
 CONTENT_STATE_PATH = DATA_DIR / "content_version.json"
-APP_VERSION = "2026.09.30.1"
+APP_VERSION = "2026.09.30.2"
 UPDATE_MANIFEST_URL = (
     "https://raw.githubusercontent.com/drugstar6-web/"
     "social-studies-quiz-app/main/version.json"
@@ -123,29 +123,48 @@ def update_lessons_from_network():
     try:
         for item in files:
             name = str(item.get("name", ""))
+            kind = str(item.get("kind", "lesson"))
             expected_hash = str(item.get("sha256", "")).lower()
             source_url = urljoin(UPDATE_MANIFEST_URL, str(item.get("url", "")))
-            if not name.startswith("Day") or not name.endswith(".json") or "/" in name or "\\" in name:
+            if "/" in name or "\\" in name or name.startswith("."):
                 raise ValueError("配信ファイル名が不正です")
+            if kind == "lesson":
+                if not name.startswith("Day") or not name.endswith(".json"):
+                    raise ValueError("教材ファイル名が不正です")
+            elif kind == "image":
+                if not name.lower().endswith((".png", ".jpg", ".jpeg")):
+                    raise ValueError("画像形式はPNGまたはJPEGに限ります")
+            else:
+                raise ValueError("配信ファイルの種類が不正です")
             if not source_url.startswith("https://") or len(expected_hash) != 64:
                 raise ValueError("{}の配信設定が不正です".format(name))
             payload = fetch_bytes(source_url)
+            if len(payload) > 5 * 1024 * 1024:
+                raise ValueError("{}のサイズが大きすぎます".format(name))
             actual_hash = hashlib.sha256(payload).hexdigest()
             if actual_hash != expected_hash:
                 raise ValueError("{}の内容が配信情報と一致しません".format(name))
-            lesson = json.loads(payload.decode("utf-8"))
-            validate_lesson(lesson, name)
+            if kind == "lesson":
+                lesson = json.loads(payload.decode("utf-8"))
+                validate_lesson(lesson, name)
+            elif name.lower().endswith(".png") and not payload.startswith(b"\x89PNG\r\n\x1a\n"):
+                raise ValueError("{}が正しいPNG画像ではありません".format(name))
+            elif name.lower().endswith((".jpg", ".jpeg")) and not payload.startswith(b"\xff\xd8\xff"):
+                raise ValueError("{}が正しいJPEG画像ではありません".format(name))
             staged_path = staging_dir / name
             staged_path.write_bytes(payload)
-            downloaded.append((name, staged_path))
+            downloaded.append((kind, name, staged_path))
 
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         backup_dir = BACKUPS_DIR / timestamp
-        for name, staged_path in downloaded:
-            destination = DAYS_DIR / name
+        for kind, name, staged_path in downloaded:
+            destination_dir = DAYS_DIR if kind == "lesson" else IMAGES_DIR
+            destination_dir.mkdir(parents=True, exist_ok=True)
+            destination = destination_dir / name
             if destination.exists():
-                backup_dir.mkdir(parents=True, exist_ok=True)
-                shutil.copy2(str(destination), str(backup_dir / name))
+                backup_target = backup_dir / ("Days" if kind == "lesson" else "images")
+                backup_target.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(str(destination), str(backup_target / name))
             staged_path.replace(destination)
 
         DATA_DIR.mkdir(parents=True, exist_ok=True)
@@ -155,7 +174,7 @@ def update_lessons_from_network():
                 {
                     "content_version": content_version,
                     "updated_at": datetime.now().astimezone().isoformat(timespec="seconds"),
-                    "files": [name for name, _ in downloaded],
+                    "files": [name for _, name, _ in downloaded],
                 },
                 ensure_ascii=False,
                 indent=2,
@@ -166,7 +185,7 @@ def update_lessons_from_network():
         return {
             "updated": True,
             "version": content_version,
-            "files": [name for name, _ in downloaded],
+            "files": [name for _, name, _ in downloaded],
         }
     finally:
         if staging_dir.exists():
