@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "content_version": "2026.09.30.1",
+  "title": "Day04〜Day06 追加",
+  "files": [
+    {
+      "name": "Day04.json",
+      "url": "Day04.json",
+      "sha256": "9c285aa358e63ba621961fbe81b8a856159b88a9dc228ea43f43426edd27568b"
+    },
+    {
+      "name": "Day05.json",
+      "url": "Day05.json",
+      "sha256": "2bb1920f6b735732aa56c45b803ab654a15434eb801b1bf6492ebed2417d4419"
+    },
+    {
+      "name": "Day06.json",
+      "url": "Day06.json",
+      "sha256": "416984dc2653c2d9bf2f5c22df8e9f360f75f3e10e27ca5396d1ca01d13f6e49"
+    }
+  ]
+}
