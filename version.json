@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "content_version": "2026.09.30.2",
-  "title": "Day06 学習図追加",
+  "content_version": "2026.10.24.1",
+  "title": "Day07 資料問題の基礎を追加",
   "files": [
     {
       "name": "Day04.json",
@@ -23,6 +23,11 @@
       "name": "day06_chiba_agriculture_fishing_diagram.jpg",
       "url": "day06_chiba_agriculture_fishing_diagram.jpg",
       "sha256": "470041b4d6c71d99e92dd8f53f27795630983c0de84d01183ff3a19172ff6bfc"
+    },
+    {
+      "name": "Day07.json",
+      "url": "Day07.json",
+      "sha256": "570d0d1282edeb7b3e071b49adedec035b66821137f09f4e756ed673442b5eee"
     }
   ]
 }
