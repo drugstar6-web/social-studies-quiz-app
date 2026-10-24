@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "content_version": "2026.10.24.3",
-  "title": "Day09 地形図の読み取りを追加",
+  "content_version": "2026.10.24.4",
+  "title": "Day10 雨温図と日本の気候を追加",
   "files": [
     {
       "name": "Day04.json",
@@ -38,6 +38,11 @@
       "name": "Day09.json",
       "url": "Day09.json",
       "sha256": "652492e0c490368fd625307854ff21ac540210e9ec3fb68a92ed5986a557033d"
+    },
+    {
+      "name": "Day10.json",
+      "url": "Day10.json",
+      "sha256": "1f80025cb300fed9453c3ccd8ac29add4f9764b10036846945bfeef4fd97ea89"
     }
   ]
 }
