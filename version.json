@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "content_version": "2026.10.24.6",
-  "title": "Day12 複数資料で考える日本地理を追加",
+  "content_version": "2026.10.24.7",
+  "title": "Day13 世界の地域区分と位置を追加",
   "files": [
     {
       "name": "Day04.json",
@@ -53,6 +53,11 @@
       "name": "Day12.json",
       "url": "Day12.json",
       "sha256": "67eda1b87a99368ecfe9f93335550916479359228305144a1651464917349053"
+    },
+    {
+      "name": "Day13.json",
+      "url": "Day13.json",
+      "sha256": "5855c155fb993e6e556bdd5e8b0c895c437cdea9283f7b6a200d8a59ae1b6491"
     }
   ]
 }
