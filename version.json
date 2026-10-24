@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "content_version": "2026.10.24.2",
-  "title": "Day08 表とグラフの読み取りを追加",
+  "content_version": "2026.10.24.3",
+  "title": "Day09 地形図の読み取りを追加",
   "files": [
     {
       "name": "Day04.json",
@@ -33,6 +33,11 @@
       "name": "Day08.json",
       "url": "Day08.json",
       "sha256": "ae9344c29de9d8788373af021fb1f54c9b759b4c2027284798ca053b752816a3"
+    },
+    {
+      "name": "Day09.json",
+      "url": "Day09.json",
+      "sha256": "652492e0c490368fd625307854ff21ac540210e9ec3fb68a92ed5986a557033d"
     }
   ]
 }
