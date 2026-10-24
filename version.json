@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "content_version": "2026.10.24.1",
-  "title": "Day07 資料問題の基礎を追加",
+  "content_version": "2026.10.24.2",
+  "title": "Day08 表とグラフの読み取りを追加",
   "files": [
     {
       "name": "Day04.json",
@@ -28,6 +28,11 @@
       "name": "Day07.json",
       "url": "Day07.json",
       "sha256": "570d0d1282edeb7b3e071b49adedec035b66821137f09f4e756ed673442b5eee"
+    },
+    {
+      "name": "Day08.json",
+      "url": "Day08.json",
+      "sha256": "ae9344c29de9d8788373af021fb1f54c9b759b4c2027284798ca053b752816a3"
     }
   ]
 }
