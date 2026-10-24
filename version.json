@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "content_version": "2026.10.24.5",
-  "title": "Day11 人口・産業資料の読み取りを追加",
+  "content_version": "2026.10.24.6",
+  "title": "Day12 複数資料で考える日本地理を追加",
   "files": [
     {
       "name": "Day04.json",
@@ -48,6 +48,11 @@
       "name": "Day11.json",
       "url": "Day11.json",
       "sha256": "cdeff2e2697ecee492884f0d4e0fefa1c0d0a00bff7c27bee90c1e279059a780"
+    },
+    {
+      "name": "Day12.json",
+      "url": "Day12.json",
+      "sha256": "67eda1b87a99368ecfe9f93335550916479359228305144a1651464917349053"
     }
   ]
 }
