@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "content_version": "2026.10.24.4",
-  "title": "Day10 雨温図と日本の気候を追加",
+  "content_version": "2026.10.24.5",
+  "title": "Day11 人口・産業資料の読み取りを追加",
   "files": [
     {
       "name": "Day04.json",
@@ -43,6 +43,11 @@
       "name": "Day10.json",
       "url": "Day10.json",
       "sha256": "1f80025cb300fed9453c3ccd8ac29add4f9764b10036846945bfeef4fd97ea89"
+    },
+    {
+      "name": "Day11.json",
+      "url": "Day11.json",
+      "sha256": "cdeff2e2697ecee492884f0d4e0fefa1c0d0a00bff7c27bee90c1e279059a780"
     }
   ]
 }
